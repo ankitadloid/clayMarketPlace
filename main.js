@@ -4,6 +4,9 @@ const ethEnabled = () => {
   if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
     window.ethereum.enable();
+    if(window.ethereum.networkVersion != '80001'){
+      alert("You are on wrong network , select polygon and refresh")
+    }
     return true;
   }
   return false;
@@ -13,7 +16,7 @@ ethEnabled()
 
 async function start(){
 
-var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"addressMapArray","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"bidAmount","type":"uint256"}],"name":"buySaleItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"getBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getMetaData","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getRentPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"bidAmount","type":"uint256"}],"name":"getRentableItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"string","name":"metaDataHash","type":"string"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"ownerPortfolio","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"price","type":"uint256"}],"name":"setPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"timeForRent","type":"uint256"}],"name":"setPriceForRent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"recieverAddress","type":"address"}],"name":"transferCoin","outputs":[],"stateMutability":"nonpayable","type":"function"}],"0x56e462884305aA22e21a75a9813aD4acB4A7cAE4");
+var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"addressMapArray","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"bidAmount","type":"uint256"}],"name":"buySaleItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"}],"name":"getBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getMetaData","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"hash","type":"string"}],"name":"getRentPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"bidAmount","type":"uint256"}],"name":"getRentableItem","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"string","name":"metaDataHash","type":"string"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"address_","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"ownerPortfolio","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"price","type":"uint256"}],"name":"setPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"modelHash","type":"string"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"timeForRent","type":"uint256"}],"name":"setPriceForRent","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"address","name":"recieverAddress","type":"address"}],"name":"transferCoin","outputs":[],"stateMutability":"nonpayable","type":"function"}],"0xb1a241EB5218d8AA211155F4757267ffE44B7F16");
  // console.log(nftContract)
   window.nftContract = nftContract
   nftContract.defaultAccount = web3.currentProvider.selectedAddress;
@@ -41,6 +44,8 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
 
   document.getElementById('mintButton').addEventListener('click',async ()=>{
 
+    document.getElementById("mintButton").disabled = true
+
     document.getElementById("mintStatus").innerHTML = "";
     if(!(document.getElementById('name').value && document.getElementById('description').value && document.getElementById('file').files[0])){
       alert("empty name or description or file");
@@ -56,7 +61,7 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
     body: formdata,
     redirect: 'follow'
   };
-
+  document.getElementById("mintStatus").innerHTML = "Uploading..";
   fetch("http://15.207.107.148:3001/mintNFT", requestOptions)
     .then(async (response)=>{
       const resp = await response.json();
@@ -67,9 +72,13 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
      .send({from:currentAddress});
 
      document.getElementById("mintStatus").innerHTML = "Sucessfully Minted: "+resp.modelHash;
+         document.getElementById("mintButton").disabled = false
+
    }
    catch{
    document.getElementById("mintStatus").innerHTML = "Error: "+resp.modelHash+" Already Minted";
+       document.getElementById("mintButton").disabled = false
+
    }
 
 
@@ -79,6 +88,7 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
     .catch(error => {
       console.log('error', error)
       document.getElementById("mintStatus").innerHTML = "Error";
+    document.getElementById("mintButton").disabled = false
 
     });
 
@@ -90,6 +100,7 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
 
 
   document.getElementById('checkPortFolio').addEventListener('click',async()=>{
+    document.getElementById('checkPortFolio').disabled = true;
     document.getElementById("checkPortFolioResult").innerHTML=""
       let i=0;
       while(1){
@@ -114,7 +125,11 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
           i+=1;
         }
         catch{
+              
+          document.getElementById('checkPortFolio').disabled = false;
+
           break
+
         }
       }
 
@@ -122,6 +137,9 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
 
 
   document.getElementById('sellFileButton').addEventListener('click',async ()=>{
+
+      document.getElementById('sellFileButton').disabled = true;
+      document.getElementById("sellFileStatus").innerHTML = "STATUS : Pending "
 
       const fileHash = document.getElementById('sellFileHash').value;
       const amount = document.getElementById('sellPrice').value
@@ -150,13 +168,15 @@ var nftContract = new web3.eth.Contract([{"inputs":[],"stateMutability":"nonpaya
         fetch("http://15.207.107.148:3001/forSale", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+          .catch(error => console.log('error', error))
+          .finally(()=>{ document.getElementById('sellFileButton').disabled = false;})
 
 
 
         document.getElementById("sellFileStatus").innerHTML = "STATUS : Sucessfull"
       }catch{
         document.getElementById("sellFileStatus").innerHTML = "STATUS : Error"
+      document.getElementById('sellFileButton').disabled = false;
 
       }
 
@@ -211,6 +231,9 @@ fetch("http://15.207.107.148:3001/forSale", requestOptions)
 
   document.getElementById('buyFileButton').addEventListener('click',async ()=>{
 
+      document.getElementById("buyFileStatus").innerHTML = "STATUS : Pending"
+
+      document.getElementById('buyFileButton').disabled = true;
       const fileHash = document.getElementById('buyFileHash').value;
       const amount = document.getElementById('buyPrice').value
       // console.log(address,amount)
@@ -238,13 +261,15 @@ fetch("http://15.207.107.148:3001/forSale", requestOptions)
         fetch("http://15.207.107.148:3001/forSale", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+          .catch(error => console.log('error', error))
+          .finally(()=>{ document.getElementById('buyFileButton').disabled = false;})
 
 
 
         document.getElementById("buyFileStatus").innerHTML = "STATUS : Sucessfull"
       }catch{
         document.getElementById("buyFileStatus").innerHTML = "STATUS : Error"
+         document.getElementById('buyFileButton').disabled = false;
 
       }
 
