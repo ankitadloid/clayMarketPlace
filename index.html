@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> </title>
+</head>
+<body>
+
+
+<button id="balance_button"> GET BALANCE </button>
+<div id="balance_div"></div>
+
+
+<button id="transfer_button"> TRANSFER BALANCE </button>
+TO ADDRESS <input id="toaddress">
+AMOUNT <input id="toaddressamount">
+<br>
+<br>
+
+<form >
+  <label for="name">name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="description">description:</label><br>
+  <input type="text" id="description" name="description">
+  <br> 
+  Upload 3D File
+  <input type="file" id="file" name="file">
+
+</form>
+
+<button id="mintButton">MINT</button>
+<div id="mintStatus">STATUS: </div>
+
+
+<br>
+<br>
+
+<button id="checkPortFolio"> CHECK PORTFOLIO </button>
+<div id="checkPortFolioResult"></div>
+
+
+
+<br>
+<br>
+
+<button id="sellFileButton"> SELL ITEM </button>
+item modelHash <input id="sellFileHash">
+Listing price amount in Loid Tocken <input id="sellPrice">
+<div id="sellFileStatus">STATUS: </div>
+
+
+
+<br>
+<br>
+
+
+<button id="getSaleItems">GET ITEMS ON SALE LIST </button> Note :  [list not getting from block chain (currently) ] 
+<div id="getSaleItemsResult"></div>
+
+
+
+<br>
+<br>
+
+
+<button id="buyFileButton"> BUY ITEM </button>
+Item modelHash <input id="buyFileHash">
+Buy price amount in Loid Tocken <input id="buyPrice">
+<div id="buyFileStatus">STATUS: </div>
+
+
+<script src="main.js"></script>
+
+
+
+</body>
+</html>
